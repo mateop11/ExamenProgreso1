@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ExamenProgreso1.Models.Celular>
+
+@{
+    ViewData["Title"] = "Lista de Celulares";
+}
+
+<h1>Lista de Celulares</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Celular</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Modelo")</th>
+            <th>@Html.DisplayName("Año")</th>
+            <th>@Html.DisplayName("Precio")</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Modelo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Año)</td>
+                <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

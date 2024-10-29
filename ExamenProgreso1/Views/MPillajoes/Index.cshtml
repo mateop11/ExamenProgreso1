@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ExamenProgreso1.Models.MPillajo>
+
+@{
+    ViewData["Title"] = "Lista de MPillajo";
+}
+
+<h1>Lista de MPillajo</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Nombre")</th>
+            <th>@Html.DisplayName("Salario")</th>
+            <th>@Html.DisplayName("Edad")</th>
+            <th>@Html.DisplayName("Activo")</th>
+            <th>@Html.DisplayName("Fecha de Nacimiento")</th>
+            <th>@Html.DisplayName("Celular Modelo")</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Salario)</td>
+                <td>@Html.DisplayFor(modelItem => item.Edad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Activo)</td>
+                <td>@Html.DisplayFor(modelItem => item.FechaNacimiento)</td>
+                <td>@(item.Celular != null ? item.Celular.Modelo : "Sin asignar")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
